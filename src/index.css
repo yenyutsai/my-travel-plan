@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans TC", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-forest: #1B2B21;
+  --color-charcoal: #242424;
+  --color-bronze: #A88B4A;
+  --color-morandi: #3A4D3F;
+  --color-rust: #A03E3E;
+  --color-gold-pale: #E6C98A;
+  --color-ink: #1A1A1A;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-ink text-white/90;
+    /* Grainy Texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  /* Washi Paper Overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/handmade-paper.png");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-charcoal/20 backdrop-blur-xl border border-bronze/20 rounded-[2.5rem] shadow-inner shadow-white/5;
+  }
+
+  .mountain-bg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 300 L100 200 L250 250 L400 100 L600 220 L750 150 L900 280 L1000 200 L1000 300 Z' fill='%231B2B21' fill-opacity='0.2'/%3E%3Cpath d='M0 300 L150 180 L350 260 L500 120 L700 240 L850 160 L1000 300 Z' fill='%23A88B4A' fill-opacity='0.05'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: bottom;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
